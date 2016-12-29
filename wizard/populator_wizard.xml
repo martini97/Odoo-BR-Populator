@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <record id="populator_wizard_view" model="ir.ui.view">
+            <field name="name">Odoo Populator</field>
+            <field name="model">odoo.populator</field>
+            <field name="arch" type="xml">
+                <form string="Odoo Populator">
+                    <group>
+                        <field name="generate_company"/>
+                        <field name="company_numbers" attrs="{'invisible': [('generate_company', '=', False)]}"/>
+                        <field name="generate_fisical_partner"/>
+                        <field name="fisical_partner_number" attrs="{'invisible': [('generate_fisical_partner', '=', False)]}"/>
+                        <field name="generate_products"/>
+                        <field name="products_number" attrs="{'invisible': [('generate_products', '=', False)]}"/>
+                        <field name="generate_employees"/>
+                        <field name="employees_number" attrs="{'invisible': [('generate_employees', '=', False)]}"/>
+                        <field name="generate_my_company"/>
+                    </group>
+                    <footer>
+                        <button name="populate"  string="Populate" type="object"
+                            class="oe_highlight" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_odoo_populator" model="ir.actions.act_window">
+            <field name="name">Odoo Populator</field>
+            <field name="res_model">odoo.populator</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_odoo_populator" name="Odoo Populator" parent="base.menu_automation" action="action_odoo_populator" sequence="90" />
+
+    </data>
+</openerp>
